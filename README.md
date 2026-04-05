@@ -1,78 +1,67 @@
-# Cyber-Alert-Triage
-Yo, I’m Raj—Master’s in Info Systems and Security, cyber analyst soul. 
-This project’s a no-code way to play analyst: triaging fake alerts like I’m on the job.
-I use free tools to sort threats from noise—hands-on, no scripts needed!
+Cyber-Alert-Triage
+Every SOC analyst deals with the same problem — too many alerts, not enough time, and most of them are noise. This project is my hands-on way of practicing exactly that: taking a pile of alerts and figuring out what actually matters.
+
+No complex code. Just the mindset and tools that make a real analyst useful.
+
+Why I Built This
+Working as a Cybersecurity Analyst, I learned fast that the hardest skill is not detecting threats — it is knowing which ones to act on first. Alert fatigue is real. This project simulates that pressure in a controlled way so I could sharpen my triage thinking outside of work hours.
 
 
-What’s the Big Idea?
-
-Analysts get slammed with alerts—“Port scan!” “Login fail!”—most are junk.
-I fake some alerts, use tools to check ‘em, and decide what’s hot. 
-It’s practice for the real gig, no coding required.
+What It Does
+Simulates a small alert queue — the kind you would see in a real SOC environment — and walks through how to investigate, prioritize, and document each one using free tools anyone can access.
 
 
-How I Made It Happen
-
-Here’s my simple flow, like I’m at my desk:
-
-1. Make Fake Alerts: Wrote pretend logs—like “10 logins failed” or “Port 445 hit 50 times.”
-   Example: “User: raj, 5 fails” vs. “Port 22, 100 hits.”
-
-2. Check with Tools: Used Wireshark to fake network hits, Event Viewer for login stuff—see what’s up.
-   Example: Wireshark showed tons of port 22 traffic—sketchy!
-
-3. Sort ‘Em: Ranked alerts—high (attacks), low (normal), based on what I saw.
-   Example: “100 port hits = High. 5 login fails = Low.”
-
-4. Log It: Wrote my calls in a text file—like a mini report.
-   Example: “High: Port 22 attack. Low: Raj forgot password.”
-
-Stuff You’ll Need
-
-Wireshark: Free from wireshark.org—sees network stuff.
-Event Viewer: Built into Windows—no download.
-Notepad: Your computer’s got it—logs your calls.
-Your PC: Just your machine, no extras.
-
-Let’s Do It—Step by Step with Commands
-
-1. Get Tools:
-   - Wireshark: wireshark.org, download, install—easy setup.
-   - Event Viewer/Notepad: Already on Windows (Mac folks, use Activity Monitor instead).
-
-2. Set Up Folder: You’re in RajCyberAIProjects/CyberAlertTriage—sweet!
-   Command: “cd RajCyberAIProjects\CyberAlertTriage” (Windows)
-   or
-   “cd RajCyberAIProjects/CyberAlertTriage” (Mac)
-   if you’re moving around.
-
-4. Fake Alerts: In Notepad, save as “alerts.txt” here:
-User: raj, 5 login fails, 10:00 AM
-Port 22, 100 hits, 10:05 AM
-Port 80, 3 hits, 10:10 AM
+Tools Used
+Wireshark — network traffic capture and analysis
+Windows Event Viewer — login and system event monitoring
+Notepad / any text editor — incident logging and documentation
 
 
-5. Check Network: Open Wireshark, pick your Wi-Fi,
-6.  hit “Start.” Click around a bit (fake traffic),
-7.   stop after a minute.
-   Filter: Type “tcp.port == 22” in the filter bar,
-hit enter—see if it’s busy. Save as “network.txt” (File > Export Objects > Text).
+The Triage Process
+Step 1 — Create the Alert Queue
+Built a simple alerts.txt file to simulate incoming alerts:
+User: raj, 5 login failures, 10:00 AM
+Port 22, 100 connection attempts, 10:05 AM
+Port 80, 3 requests, 10:10 AM
+These represent the kind of events that would come through a SIEM in a real environment.
 
-9. Check Logins: Windows: Search “Event Viewer,” open it, go to “Windows Logs >
-10. Security.” Look for failed logins.
-   Example: “Event ID 4625”—login fail. Note it in “alerts.txt.”
 
-11. Triage: Open “alerts.txt,” add your calls:
-   Example: “Port 22, 100 hits—High (attack?). User: raj, 5 fails—Low (me messing up).”
+Step 2 — Investigate Network Activity
+Opened Wireshark, started a capture on the active interface, then filtered for suspicious traffic: tcp.port == 22
+High volume on Port 22 in a short window is a red flag — could indicate brute force or unauthorized SSH attempts.
+Exported findings to network.txt for documentation.
 
-Bumps in the Road
 
-No Traffic: Wireshark’s quiet? Surf more to stir it up.
-Event Viewer Empty: Try failing a login yourself—lock your PC wrong a few times.
-Overthinking: Keep it simple—high = lots, low = little.
+Step 3 — Check Authentication Events
+Opened Windows Event Viewer → Windows Logs → Security
+Looked for Event ID 4625 — failed login attempts. Cross-referenced timestamps with the alert queue to see if login failures correlated with the network activity.
 
-Why I Love It
 
-It’s analyst practice without code—feels like the real deal. Shows my triage game!
+Step 4 — Prioritize and Document
+Updated alerts.txt with triage decisions:
+Port 22 — 100 hits in 60 seconds — HIGH (potential brute force, escalate)
+Port 80 — 3 hits — LOW (normal web traffic, monitor only)
+User: raj — 5 login fails — LOW (user error, no escalation needed)
+This mirrors the documentation process I follow professionally — clear, concise, and actionable for whoever picks it up next.
 
-Snap Wireshark’s “tcp.port == 22” filter with hits—save as “screenshot.
+
+What I Learned
+How to separate genuine threats from background noise quickly
+The importance of correlating multiple data sources before making a call
+
+How to document triage decisions clearly so the next analyst understands your reasoning
+That 90% of alerts are low priority — but that 10% matters a lot
+
+How to Run It Yourself
+Download Wireshark from wireshark.org
+Create an alerts.txt file with your simulated events
+Run a Wireshark capture and apply port filters
+Open Event Viewer and review Security logs
+Document your triage calls and reasoning
+No coding required. Just your machine and your analytical thinking.
+
+
+€cho_Connect_with_me:
+LinkedIn: linkedin.com/in/rajesh-rathlavathu23
+Portfolio: Richierich69696.github.io
+GitHub: github.com/Richierich69696
