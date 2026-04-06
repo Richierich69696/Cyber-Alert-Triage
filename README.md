@@ -62,6 +62,6 @@ No coding required. Just your machine and your analytical thinking.
 
 
 €cho_Connect_with_me:
-LinkedIn: linkedin.com/in/rajesh-rathlavathu23
-            Portfolio: Richierich69696.github.io
+                           LinkedIn: linkedin.com/in/rajesh-rathlavathu23
+Portfolio: Richierich69696.github.io
 GitHub: github.com/Richierich69696
