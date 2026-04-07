@@ -50,7 +50,7 @@ How to separate genuine threats from background noise quickly
 The importance of correlating multiple data sources before making a call
 
 How to document triage decisions clearly so the next analyst understands your reasoning
-That 90% of alerts are low priority — but that 10% matters a lot
+That 90% of alerts are low priority — but that 10% matters a lot.
 
 How to Run It Yourself
 Download Wireshark from wireshark.org
